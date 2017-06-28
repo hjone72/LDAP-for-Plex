@@ -24,4 +24,5 @@ Now you should be able to run `node LDAPPlex.js` and your server will start.
 
 ## Booksonic settings
 LDAP URL: ldap://localhost:2389/ou=users,o=plex.tv
+
 LDAP Search Filter: (cn={0})
