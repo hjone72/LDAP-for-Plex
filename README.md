@@ -11,16 +11,14 @@ If the project gets some traction more features could be added. Due to the way l
 This LDAP server does not currently require authentication to preform queries so I suggest you don't expose the server externally.
 
 ## Installation
-These steps assume you have NodeJS installed. https://nodejs.org/en/
+These steps assume you have NodeJS and NPM installed.
 
 1. Clone this GitHub project.
-2. npm install uuid
-3. npm install xml2js
-4. npm install ldapjs
+2. Run `npm install`
 
-Once you've finished the above steps, edit the LDAPPlex.js file and set your configuration. Defaults should work for most things but you will need to change plexToken, plexMachineID, and plexServerName.
+Once you've finished the above steps, run `npm start` and wait for the config to generate, edit the `config/options.json` file and add your plexToken, plexMachineId and plexServerName, you can change the rest if you want.
 
-Now you should be able to run `node LDAPPlex.js` and your server will start.
+Now you should be able to run `npm start` and your server will start.
 
 ## Booksonic settings
 LDAP URL: ldap://localhost:2389/ou=users,o=plex.tv
