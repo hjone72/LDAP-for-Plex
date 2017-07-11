@@ -9,6 +9,7 @@ var fs = require('fs');
 const defaults = {
     debug: false,
     port: 2389,
+    host: '0.0.0.0',
     rootDN: 'ou=users, o=plex.tv',
     plexToken: '',
     plexMachineID: '',
@@ -37,6 +38,7 @@ var config = require('./config/options.json');
 var version = '0.2';
 var debug = config.debug;
 var ldapPort = config.port;
+var ldapHostname = config.host;
 var rootDN = config.rootDN; // This can be anything you like. It won't change anything though.
 var plexToken = config.plexToken; // Your Plex token. This is used to get your friends list.
 var plexMachineID = config.plexMachineID; // Only allow servers that have this MachineID.
@@ -175,7 +177,7 @@ if (plexToken === '') {
     loadPlexUsers(plexToken)
         .then(function () {
             console.log('Database loaded.');
-            server.listen(ldapPort, function () {
+            server.listen(ldapPort, ldapHostname, function () {
                 console.log('LDAP for Plex server up at: %s', server.url);
             });
         })
