@@ -1,19 +1,48 @@
 // Imports
 var request = require('request');
-var uuid = require('uuid');                         // npm install uuid
-var parseString = require('xml2js').parseString;    // npm install xml2js
-var ldap = require('ldapjs');                       // npm install ldapjs
+var uuid = require('uuid');
+var parseString = require('xml2js').parseString;
+var ldap = require('ldapjs');   
 var crypto = require('crypto');
-// var fs = require('fs');
+var fs = require('fs');
+
+const defaults = {
+    debug: false,
+    port: 2389,
+    host: '0.0.0.0',
+    rootDN: 'ou=users, o=plex.tv',
+    plexToken: '',
+    plexMachineID: '',
+    plexServerName: ''
+};
+
+const optionsFile = 'config/options.json';
+const configFolder = 'config/'
+
+if(!fs.existsSync(optionsFile) && !fs.existsSync(configFolder)) {
+    fs.mkdirSync(configFolder);
+    var json = JSON.stringify(defaults, null, '\t');
+    fs.writeFileSync(optionsFile, json);
+    console.log("Please fill out config/options.json");
+    return;
+} else if (!fs.existsSync(optionsFile)) {
+    var json = JSON.stringify(defaults, null, '\t');
+    fs.writeFileSync(optionsFile, json);
+    console.log("Please fill out config/options.json");
+    return;
+}
+
+var config = require('./config/options.json');
 
 // Configuration
 var version = '0.2';
-var debug = false;
-var ldapPort = 2389;
-var rootDN = 'ou=users, o=plex.tv'; // This can be anything you like. It won't change anything though.
-var plexToken = ''; // Your Plex token. This is used to get your friends list.
-var plexMachineID = ''; // Only allow servers that have this MachineID.
-var plexServerName = ''; // The name of your server.
+var debug = config.debug;
+var ldapPort = config.port;
+var ldapHostname = config.host;
+var rootDN = config.rootDN; // This can be anything you like. It won't change anything though.
+var plexToken = config.plexToken; // Your Plex token. This is used to get your friends list.
+var plexMachineID = config.plexMachineID; // Only allow servers that have this MachineID.
+var plexServerName = config.plexServerName; // The name of your server.
 
 // Variables
 var plexUser;
@@ -148,7 +177,7 @@ if (plexToken === '') {
     loadPlexUsers(plexToken)
         .then(function () {
             console.log('Database loaded.');
-            server.listen(ldapPort, function () {
+            server.listen(ldapPort, ldapHostname, function () {
                 console.log('LDAP for Plex server up at: %s', server.url);
             });
         })

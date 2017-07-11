@@ -1,0 +1,35 @@
+{
+  "name": "ldap-for-plex",
+  "version": "0.2.0",
+  "description": "An LDAP server that uses Plex as the provider.",
+  "main": "LDAPPlex.js",
+  "scripts": {
+    "start": "node LDAPPlex.js"
+  },
+  "contributors": [
+    {
+      "name": "hjone72",
+      "email": "",
+      "url": ""
+    },
+    {
+      "name": "SpicyDwarf",
+      "email": "",
+      "url": ""
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjone72/LDAP-for-Plex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hjone72/LDAP-for-Plex/issues"
+  },
+  "homepage": "https://github.com/hjone72/LDAP-for-Plex",
+  "dependencies": {
+    "ldapjs": "^1.0.1",
+    "request": "^2.81.0",
+    "uuid": "^3.1.0",
+    "xml2js": "^0.4.17"
+  }
+}
