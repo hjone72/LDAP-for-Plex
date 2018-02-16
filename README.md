@@ -45,4 +45,4 @@ LDAP Search Filter: (cn={0})
 
 ## Nextcloud settings
 
-Use the settings shown in [this](https://imgur.com/a/3rHve) album.
+The settings are explained [here](https://blog.laubacher.io/blog/use-plex-credentials-for-nextcloud)
