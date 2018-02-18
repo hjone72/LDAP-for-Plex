@@ -27,13 +27,13 @@ There's a docker available [here](https://github.com/Starbix/dockerimages/tree/m
 
 You can use it like this:
 ```
-docker run 
-  --name='LDAP for Plex' 
-  --net='bridge' 
-  -e 'TOKEN'='YOURPLEXTOKEN'
-  -e 'MACHINEID'='YOURMACHINEID'
-  -e 'SERVERNAME'='YOURSERVERNAME'
-  -p 2389:2389
+docker run \
+  --name='LDAP_for_Plex' \
+  --net='bridge' \
+  -e 'TOKEN'='YOURPLEXTOKEN' \
+  -e 'MACHINEID'='YOURMACHINEID' \
+  -e 'SERVERNAME'='YOURSERVERNAME' \
+  -p 2389:2389 \
 starbix/plex-ldap
 
 ```
