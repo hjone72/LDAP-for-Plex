@@ -46,3 +46,14 @@ LDAP Search Filter: (cn={0})
 ## Nextcloud settings
 
 The settings are explained [here](https://blog.laubacher.io/blog/use-plex-credentials-for-nextcloud)
+
+## Emby settings
+*Reportedly working as of 4.1.0.1 beta*
+
+LDAP server url "192.168.1.1"
+
+User search base "OU=users,O=plex.tv"
+
+User search filter "(CN={0})"
+
+*all other settings blank/default*
