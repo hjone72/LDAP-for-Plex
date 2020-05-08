@@ -57,3 +57,18 @@ User search base "OU=users,O=plex.tv"
 User search filter "(CN={0})"
 
 *all other settings blank/default*
+
+## Jellyfin settings
+*Reportedly working as of 10.3.2*
+
+LDAP Server: your ip such as 192.168.1.1
+
+Use SSL NO
+
+LDAP Base DN: OU=users,O=plex.tv
+LDAP Attributes: uid, cn, mail, displayName, email
+LDAP User Filter: (objectclass=Plex.tv User)
+LDAP Admin Filter: (enabledService=JellyfinAdministrator)
+LDAP Bind user: uid=12345678, ou=users, o=plex.tv
+
+Note: you need to obtain your uid via plex or by user ldapsearch.  Jellyfin won't do anonymous LDAP searches, but it can log in as any user as long as you use the user's password.
